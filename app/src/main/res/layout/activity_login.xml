@@ -8,6 +8,142 @@
     android:background="#FFFFFF"
     tools:context=".ui.activity.LoginActivity">
 
+    <ImageView
+        android:id="@+id/login_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/login_bg"
+        android:layout_width="match_parent"
+        android:layout_height="235dp">
 
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/iv_mail"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_bg"
+        android:src="@mipmap/login_icon_mail_n"
+        android:layout_width="24dp"
+        android:layout_height="24dp">
+
+    </ImageView>
+
+    <EditText
+        android:id="@+id/editEmil"
+        app:layout_constraintLeft_toRightOf="@id/iv_mail"
+        app:layout_constraintTop_toBottomOf="@id/login_bg"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="42dp"
+        android:background="@null"
+        android:hint="请输入邮箱账号"
+        android:textSize="14sp"
+        android:textColor="#999999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </EditText>
+
+    <View
+        android:id="@+id/vv"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="#999999"
+        app:layout_constraintTop_toBottomOf="@id/iv_mail"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+
+    </View>
+
+    <ImageView
+        android:id="@+id/iv_lock"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vv"
+        android:src="@mipmap/login_icon_lock_n"
+        android:layout_width="24dp"
+        android:layout_height="24dp">
+
+    </ImageView>
+
+    <EditText
+        android:id="@+id/editPwd"
+        app:layout_constraintLeft_toRightOf="@id/iv_lock"
+        app:layout_constraintTop_toBottomOf="@id/vv"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@null"
+        android:hint="请输入密码"
+        android:textSize="14sp"
+        android:textColor="#999999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </EditText>
+
+    <ImageView
+        android:id="@+id/iv_hide"
+        android:src="@mipmap/login_icon_hide_password_n"
+        app:layout_constraintTop_toBottomOf="@id/vv"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="32dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp">
+
+    </ImageView>
+
+    <View
+        android:id="@+id/vvv"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="#999999"
+        app:layout_constraintTop_toBottomOf="@id/iv_lock"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+
+    </View>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/vvv"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="忘记密码"
+        android:textColor="#666666"
+        android:textSize="10sp"
+        android:layout_marginTop="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/vvv"
+        android:layout_marginRight="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="申请入驻"
+        android:textColor="#3087ea"
+        android:textSize="10sp"
+        android:layout_marginTop="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <Button
+        android:background="@drawable/buttom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp"
+        android:text="登入"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="300dp"
+        android:layout_height="36dp">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
