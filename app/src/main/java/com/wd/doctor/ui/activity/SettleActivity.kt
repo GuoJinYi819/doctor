@@ -7,9 +7,12 @@ import android.widget.EditText
 import com.wd.doctor.R
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.DepartmentBean
+import com.wd.doctor.bean.JobTitleListBean
 import com.wd.doctor.customview.MyEditText
 import com.wd.doctor.mvp.department.DepartmentPresenter
 import com.wd.doctor.mvp.department.IDepartmentContract
+import com.wd.doctor.mvp.jobtitlelist.IJobTitleListContract
+import com.wd.doctor.mvp.jobtitlelist.JobTitlePresenter
 import kotlinx.android.synthetic.main.activity_settle.*
 import kotlinx.android.synthetic.main.view_edit.view.*
 import kotlinx.android.synthetic.main.view_edit.view.tvTitle
@@ -20,14 +23,28 @@ import kotlinx.android.synthetic.main.view_spring.view.*
  * @version 创建时间：2020/5/18 0018 15:41
  * @Description: 用途：申请入驻
  */
-class SettleActivity:BaseActivity(), View.OnClickListener, IDepartmentContract.IView {
+class SettleActivity:BaseActivity(), View.OnClickListener, IDepartmentContract.IView, IJobTitleListContract.IView {
     //科室列表
     var list:ArrayList<String>? = ArrayList()
+    //职位列表
+    var jobTitleList = ArrayList<String>()
+    override fun onJobTitleSuccess(bean: JobTitleListBean) {
+        val result = bean.result
+        result?.forEach {
+            jobTitleList.add(it.jobTitle!!)
+        }
+    }
+
+    override fun onJobTitleFailed(error: String) {
+
+    }
+
+
     override fun onDepartmentSuccess(bean: DepartmentBean) {
         val arrayList = bean.result
         arrayList?.let {
             for ((index,value) in arrayList.withIndex()){
-                list?.add(index,value.departmentName!!)
+                list?.add(value.departmentName!!)
             }
         }
 
@@ -69,7 +86,7 @@ class SettleActivity:BaseActivity(), View.OnClickListener, IDepartmentContract.I
 
                 mySpring_2.tvTitle?.text = "您的职称"
 
-                mySpring_2.setData(list!!)
+                mySpring_2.setData(jobTitleList!!)
 
             }
         }
@@ -81,9 +98,12 @@ class SettleActivity:BaseActivity(), View.OnClickListener, IDepartmentContract.I
     }
 
     override fun initData() {
-
+        //科室列表请求数据
         var presenter = DepartmentPresenter(this)
         presenter.getDepartmentData()
+        //职位请求数据
+        var pre = JobTitlePresenter(this)
+        pre.getJobTitleData()
 
         editCode.tvTitle.text = "请输入验证码"
         editPwd_1.tvTitle.text = "请输入密码"
