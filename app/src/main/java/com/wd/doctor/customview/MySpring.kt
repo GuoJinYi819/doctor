@@ -42,6 +42,7 @@ class MySpring:LinearLayout {
            val adapter = ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, list)
            //设置下拉列表菜单样式
            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+           tvText?.text = list.get(0)
            spinner?.adapter = adapter
            spinner?.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
                override fun onNothingSelected(parent: AdapterView<*>?) {
