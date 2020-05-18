@@ -30,6 +30,7 @@ class StartPagerActivity :BaseActivity(){
             override fun onAnimationEnd(animation: Animator?) {
                 //跳转页面
                 startActivityFinish<LoginActivity>()
+                overridePendingTransition(R.anim.zoomin,R.anim.zoomout)
             }
 
             override fun onAnimationCancel(animation: Animator?) {
