@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="10sp"
+    android:layout_marginTop="10sp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="您的邮箱账号"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#666666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+    <RelativeLayout
+        android:background="@drawable/edit_text"
+        android:padding="5dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/tvText"
+            android:textSize="16sp"
+            android:paddingLeft="14dp"
+            android:textColor="#999999"
+            android:gravity="center_vertical"
+            android:text="哈哈"
+            android:layout_width="260dp"
+            android:layout_height="40dp">
+
+        </TextView>
+        <Spinner
+            android:layout_toRightOf="@id/tvText"
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+
+        </Spinner>
+    </RelativeLayout>
+
+
+</LinearLayout>

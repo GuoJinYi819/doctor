@@ -121,6 +121,7 @@
     </TextView>
 
     <TextView
+        android:id="@+id/tvSettle"
         app:layout_constraintTop_toBottomOf="@id/vvv"
         android:layout_marginRight="30dp"
         app:layout_constraintRight_toRightOf="parent"

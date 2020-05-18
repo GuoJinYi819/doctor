@@ -1,5 +1,6 @@
 package com.wd.doctor.net
 
+import com.wd.doctor.bean.DepartmentBean
 import com.wd.doctor.bean.LoginBean
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -13,6 +14,7 @@ import retrofit2.http.Url
  */
 interface ApiService {
 
-    @POST
-    fun login(@Url path:String):Observable<LoginBean>
+    //查询科室列表
+    @GET
+    fun findDepartment(@Url path:String):Observable<DepartmentBean>
 }

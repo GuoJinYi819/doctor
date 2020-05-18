@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="10sp"
+    android:layout_marginTop="10sp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="您的邮箱账号"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#666666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/editText"
+            android:padding="5dp"
+            android:background="@drawable/edit_text"
+            android:layout_width="300dp"
+            android:layout_height="40dp">
+
+        </EditText>
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/iv_eye"
+            android:layout_marginLeft="270dp"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/login_icon_hide_password_n"
+            android:layout_width="16dp"
+            android:layout_height="16dp">
+
+        </ImageView>
+    </RelativeLayout>
+
+</LinearLayout>
