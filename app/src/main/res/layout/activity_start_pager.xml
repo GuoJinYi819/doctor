@@ -1,18 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activitybg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ui.activity.StartPagerActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_marginTop="140dp"
+        android:src="@mipmap/startpager"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="118dp"
+        android:layout_height="86dp">
+    </ImageView>
+    <TextView
+        android:id="@+id/tvDoctor"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="维度健康"
+        android:textSize="14sp"
+        android:textColor="#3087ea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv"
+        app:layout_constraintTop_toBottomOf="@id/tvDoctor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="医生版"
+        android:textSize="14sp"
+        android:textColor="#3087ea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="学生作品"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
