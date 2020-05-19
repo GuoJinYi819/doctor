@@ -84,6 +84,7 @@ class SettleTwoActivity:BaseActivity(), IDepartmentContract.IView, IJobTitleList
         pre.getJobTitleData()
 
         editName.tvTitle.text = "您的真实姓名"
+        editName.editText?.maxLines = 6
         editName.editText?.setText("")
 
         editAddrss.tvTitle.text = "您所在医院"

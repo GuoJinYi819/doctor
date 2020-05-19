@@ -78,6 +78,34 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
         //获取验证码
         getCode.setOnClickListener(this)
 
+        editPwd_1.eye?.setOnClickListener {
+            editPwd_1.eye?.setBackgroundResource(R.mipmap.login_icon_hide_password_n)
+            editPwd_1.setPassword(true)
+        }
+
+        editPwd_1.eye?.setOnLongClickListener(object :View.OnLongClickListener{
+            override fun onLongClick(v: View?): Boolean {
+                editPwd_1.eye?.setBackgroundResource(R.mipmap.login_icon_show_password)
+                editPwd_1.setPassword(false)
+                return false
+            }
+
+        })
+
+        editPwd_2.eye?.setOnClickListener {
+            editPwd_2.eye?.setBackgroundResource(R.mipmap.login_icon_hide_password_n)
+            editPwd_2.setPassword(true)
+        }
+        editPwd_2.eye?.setOnLongClickListener(object :View.OnLongClickListener{
+            override fun onLongClick(v: View?): Boolean {
+                editPwd_2.eye?.setBackgroundResource(R.mipmap.login_icon_show_password)
+                editPwd_2.setPassword(false)
+                return false
+            }
+
+        })
+
+
 
     }
 
@@ -86,6 +114,7 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
             R.id.tvNext->{
                     if (notNull()) {
                          startActivity(Intent(this,SettleTwoActivity::class.java))
+                         overridePendingTransition(R.anim.zoomin,R.anim.zoomout)
                      }
                 }
 
@@ -173,11 +202,16 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
     override fun initData() {
 
         editCode.tvTitle.text = "请输入验证码"
+        editCode.editText?.inputType = InputType.TYPE_CLASS_NUMBER
+
         editPwd_1.tvTitle.text = "请输入密码"
         //设置密码样式为 不可见
         editPwd_2.tvTitle.text = "请再次输入密码"
         editPwd_1.setPassword(true)
+        editPwd_1.editText?.maxLines = 8
         editPwd_2.setPassword(true)
+        editPwd_2.editText?.maxLines = 8
+
         editPwd_1.eye?.visibility = View.VISIBLE
         editPwd_2.eye?.visibility = View.VISIBLE
 
