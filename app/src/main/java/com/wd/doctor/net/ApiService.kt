@@ -3,10 +3,9 @@ package com.wd.doctor.net
 import com.wd.doctor.bean.DepartmentBean
 import com.wd.doctor.bean.JobTitleListBean
 import com.wd.doctor.bean.LoginBean
+import com.wd.doctor.bean.MessageBean
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Url
+import retrofit2.http.*
 import java.io.Serializable
 
 /**ClassName: Doctor
@@ -23,5 +22,10 @@ interface ApiService {
     //查询职位列表
     @GET
     fun findJobTitle(@Url path:String):Observable<JobTitleListBean>
+
+    //发送验证码
+    @POST
+    @FormUrlEncoded
+    fun sendEmailCode(@Url path:String,@Field("email") email:String):Observable<MessageBean>
 
 }

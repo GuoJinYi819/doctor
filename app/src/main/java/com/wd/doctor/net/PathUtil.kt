@@ -16,4 +16,9 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/v1/findJobTitleList"
         return path
     }
+    //发送验证码
+    fun sendEmailCode():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/v1/sendEmailCode"
+        return path
+    }
 }

@@ -20,6 +20,7 @@
         <EditText
             android:id="@+id/editText"
             android:padding="5dp"
+            android:singleLine="true"
             android:background="@drawable/edit_text"
             android:layout_width="300dp"
             android:layout_height="40dp">

@@ -1,6 +1,9 @@
 package com.wd.doctor.ui.activity
 
+import android.annotation.SuppressLint
 import android.graphics.Color
+import android.os.Handler
+import android.os.Message
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
@@ -10,11 +13,14 @@ import com.wd.doctor.R
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.DepartmentBean
 import com.wd.doctor.bean.JobTitleListBean
+import com.wd.doctor.bean.MessageBean
 import com.wd.doctor.customview.MyEditText
 import com.wd.doctor.mvp.department.DepartmentPresenter
 import com.wd.doctor.mvp.department.IDepartmentContract
 import com.wd.doctor.mvp.jobtitlelist.IJobTitleListContract
 import com.wd.doctor.mvp.jobtitlelist.JobTitlePresenter
+import com.wd.doctor.mvp.sendemailcode.ISendEmailContract
+import com.wd.doctor.mvp.sendemailcode.SendEmilPresenter
 import kotlinx.android.synthetic.main.activity_settle.*
 import kotlinx.android.synthetic.main.view_edit.view.*
 import kotlinx.android.synthetic.main.view_edit.view.tvTitle
@@ -26,7 +32,36 @@ import org.jetbrains.anko.hintTextColor
  * @version 创建时间：2020/5/18 0018 15:41
  * @Description: 用途：申请入驻
  */
-class SettleActivity:BaseActivity(), View.OnClickListener, IDepartmentContract.IView, IJobTitleListContract.IView {
+class SettleActivity:BaseActivity(), View.OnClickListener, IDepartmentContract.IView, IJobTitleListContract.IView,
+    ISendEmailContract.IView {
+    var i = 60
+    var handler = object :Handler(){
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+
+            if(msg.what==1){
+                i--
+                if(i>0){
+                    getCode.text = "${i}秒内有效"
+                    sendEmptyMessageDelayed(1,1000)
+                }else{
+                    getCode.text = "重新发送验证码"
+                }
+            }
+        }
+    }
+
+    //验证码
+    override fun onSendEmailSuccess(bean: MessageBean) {
+        if(bean.message.equals("发送成功")){
+            handler.sendEmptyMessageDelayed(1,1000)
+        }
+    }
+
+    override fun onSendEmailFailed(error: String) {
+        myToast("异常信息"+error)
+    }
+
     //科室列表
     var list:ArrayList<String>? = ArrayList()
     //职位列表
@@ -65,6 +100,8 @@ class SettleActivity:BaseActivity(), View.OnClickListener, IDepartmentContract.I
 
         //下一步
         tvNext.setOnClickListener(this)
+        //获取验证码
+        getCode.setOnClickListener(this)
 
     }
     var help:Boolean = false
@@ -77,6 +114,19 @@ class SettleActivity:BaseActivity(), View.OnClickListener, IDepartmentContract.I
                     change()
                     if(help1){
                         myToast("下一步")
+                    }
+                }
+
+            }
+            R.id.getCode->{
+                //获取验证码
+                if (getCode.text.toString().equals("获取验证码")||getCode.text.toString().equals("重新发送验证码")) {
+                    if (!stringNotNull(editEmil.editText?.text.toString())) {
+                        var presenter = SendEmilPresenter(this)
+                        presenter.sendEmailCode(editEmil.editText?.text.toString())
+                    }else{
+                        editEmil.editText?.editText?.hint = "账号暂未输入"
+                        editEmil.editText?.editText?.hintTextColor = Color.RED
                     }
                 }
 
