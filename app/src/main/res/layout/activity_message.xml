@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="match_parent">
+    <include layout="@layout/back_view"></include>
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:text="您的个人简介"
+        android:textColor="#333"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+    <RelativeLayout
+        android:id="@+id/jj"
+        android:layout_marginTop="18sp"
+        android:background="@drawable/relative_true"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <EditText
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:id="@+id/editPersonalProfile"
+            android:background="@null"
+            android:text="什么也不是"
+            android:maxLength="200"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </EditText>
+
+        <TextView
+            android:id="@+id/tvValue"
+            android:text="5/200"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="14sp"
+            android:textColor="#1E90FF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:text="您的擅长领域"
+        android:textColor="#333"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <RelativeLayout
+        android:id="@+id/ly"
+        android:layout_marginTop="18sp"
+        android:background="@drawable/relative_false"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <EditText
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:id="@+id/editGoodField"
+            android:background="@null"
+            android:text="混子"
+            android:maxLength="500"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </EditText>
+
+        <TextView
+            android:text="300字以内"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="14sp"
+            android:textColor="#1E90FF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingBottom="20dp"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tvNext"
+            android:background="@drawable/buttom_s"
+            android:text="申请入驻"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:layout_width="300dp"
+            android:layout_height="36dp">
+
+        </Button>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -20,6 +20,8 @@ class MySpring:LinearLayout {
     var tvText:TextView? = null
     var tvTitle:TextView? = null
 
+    var onPositionListener:OnPositionListener? = null
+
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -52,11 +54,15 @@ class MySpring:LinearLayout {
                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                    val text = adapter.getItem(position)
                    tvText?.text = text
+                   onPositionListener?.onPosition(position)
                }
 
            }
        }
 
+    }
+    public interface OnPositionListener{
+        fun onPosition(id:Int)
     }
 
 }
