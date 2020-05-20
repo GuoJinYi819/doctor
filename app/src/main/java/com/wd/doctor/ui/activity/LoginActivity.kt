@@ -14,6 +14,7 @@ import com.wd.doctor.mvp.login.LoginPresenter
 import com.wd.doctor.utils.RsaCoder
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.hintTextColor
+import org.jetbrains.anko.textColor
 
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
@@ -29,6 +30,23 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
     override fun initLintener() {
         //申请入驻
         tvSettle.setOnClickListener(this)
+        editEmil.setOnFocusChangeListener(object :View.OnFocusChangeListener{
+            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+                if(!hasFocus){
+                    val emil = editEmil.text.toString()
+                    if (!emil.contains(".com")) {
+                        editEmil.textColor = Color.RED
+                        myToast("账号格式不对")
+                    }else{
+
+                    }
+                }else{
+                    editEmil.textColor = Color.BLACK
+                }
+            }
+
+        })
+
         //登入
         btnLogin.setOnClickListener {
             val emil = editEmil.text.toString()
@@ -41,11 +59,6 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
                 editPwd.hint = "密码暂未输入"
                 editPwd.hintTextColor = Color.RED
             }else{
-
-                if (!emil.contains(".com")) {
-                    editEmil.hint = "账号格式不对"
-                    editEmil.hintTextColor = Color.RED
-                }else{
                     //请求数据
                     val presenter = LoginPresenter(this)
                     var hashMap = HashMap<String,String>()
@@ -54,8 +67,6 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
                     val pwd1 = RsaCoder.encryptByPublicKey(pwd)
                     hashMap.put("pwd",pwd1)
                     presenter.login(hashMap)
-
-                }
 
             }
         }
@@ -102,6 +113,8 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
 
     override fun onLoginSuccess(bean: LoginBean) {
         if (bean.message!!.contains("登录成功")) {
+            val result = bean.result
+            
             startActivityFinish<HomePagerActivity>()
         }else if(bean.message!!.contains("登录失败，账号或密码错误")){
             editPwd.setText("")

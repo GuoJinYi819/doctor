@@ -50,6 +50,11 @@ class ForgetPwdActivity:BaseActivity(), ISendEmailContract.IView {
     }
 
     override fun initLintener() {
+
+        ivBack.setOnClickListener {
+            finish()
+        }
+
         getCode.setOnClickListener {
             if(!TextUtils.isEmpty(editEmail.text.toString())){
                 val email = editEmail.text.toString()
