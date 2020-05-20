@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@mipmap/login_bg"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/ivBack"
+            android:src="@mipmap/common_icon_back_black_n"
+            android:layout_width="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="20dp">
+        </ImageView>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="忘记密码"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/solid"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
+
+    </LinearLayout>
+
+</LinearLayout>

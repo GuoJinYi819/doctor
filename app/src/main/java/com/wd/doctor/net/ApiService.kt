@@ -1,10 +1,8 @@
 package com.wd.doctor.net
 
-import com.wd.doctor.bean.DepartmentBean
-import com.wd.doctor.bean.JobTitleListBean
-import com.wd.doctor.bean.LoginBean
-import com.wd.doctor.bean.MessageBean
+import com.wd.doctor.bean.*
 import io.reactivex.Observable
+import okhttp3.RequestBody
 import retrofit2.http.*
 import java.io.Serializable
 
@@ -27,5 +25,16 @@ interface ApiService {
     @POST
     @FormUrlEncoded
     fun sendEmailCode(@Url path:String,@Field("email") email:String):Observable<MessageBean>
+
+    //申请入驻
+    @POST
+    @FormUrlEncoded
+    fun applyJoin(@Url path:String,@Body bean:String):Observable<MessageBean>
+
+    //登入
+    @POST
+    @FormUrlEncoded
+    fun login(@Url path:String,@FieldMap params:Map<String,String>):Observable<LoginBean>
+
 
 }

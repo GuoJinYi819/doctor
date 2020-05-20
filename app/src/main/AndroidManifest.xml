@@ -23,6 +23,7 @@
         <activity android:name=".ui.activity.SettleTwoActivity"/>
         <activity android:name=".ui.activity.MessageActivity"/>
         <activity android:name=".ui.activity.SettleOrverActivity"/>
+        <activity android:name=".ui.activity.HomePagerActivity"/>
     </application>
 
 </manifest>

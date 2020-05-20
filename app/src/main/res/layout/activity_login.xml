@@ -38,6 +38,7 @@
         android:layout_marginTop="42dp"
         android:background="@null"
         android:hint="请输入邮箱账号"
+        android:singleLine="true"
         android:maxLines="15"
         android:textSize="14sp"
         android:textColor="#999999"
@@ -77,6 +78,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="32dp"
         android:background="@null"
+        android:singleLine="true"
         android:hint="请输入密码"
         android:password="true"
         android:textSize="14sp"
@@ -112,6 +114,7 @@
     </View>
 
     <TextView
+        android:id="@+id/tvPwd"
         app:layout_constraintTop_toBottomOf="@id/vvv"
         android:layout_marginLeft="30dp"
         app:layout_constraintLeft_toLeftOf="parent"

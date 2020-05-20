@@ -1,6 +1,8 @@
 package com.wd.doctor.net
 
 import okhttp3.Interceptor
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,10 +30,8 @@ class RetrofitUtil {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val request = chain.request()
                     val newBuilder = request.newBuilder()
-                    newBuilder.addHeader("ak","1.0")
-                    newBuilder.addHeader("userId","00")
-                    newBuilder.addHeader("sessionId","00")
-                    newBuilder.addHeader("Content-Type","application/json")
+                    newBuilder.addHeader("Accept", "application/json")
+                    newBuilder.addHeader("Content-Type", "application/json")
                     val newRequest = newBuilder.build()
                     return chain.proceed(newRequest)
                 }
@@ -39,6 +39,7 @@ class RetrofitUtil {
             })
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .build()
+
         //初始化retrofit
         retrofit = Retrofit.Builder()
             .baseUrl("http://mobile.bwstudent.com/")//网络路径

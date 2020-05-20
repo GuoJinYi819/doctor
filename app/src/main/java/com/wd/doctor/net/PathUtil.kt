@@ -21,4 +21,14 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/v1/sendEmailCode"
         return path
     }
+    //申请入驻
+    fun applyJoin():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/v1/applyJoin"
+        return path
+    }
+    //登入
+    fun login():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/v1/login"
+        return path
+    }
 }
