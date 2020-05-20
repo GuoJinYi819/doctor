@@ -36,5 +36,10 @@ interface ApiService {
     @FormUrlEncoded
     fun login(@Url path:String,@FieldMap params:Map<String,String>):Observable<LoginBean>
 
+    //校验验证码
+    @POST
+    @FormUrlEncoded
+    fun checkCode(@Url path:String, @Field("email") email:String, @Field("code")code:String):Observable<MessageBean>
+
 
 }

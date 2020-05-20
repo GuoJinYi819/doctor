@@ -5,17 +5,22 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Handler
 import android.os.Message
+import android.text.Editable
 import android.text.InputType
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.EditText
+import androidx.core.widget.addTextChangedListener
 import com.wd.doctor.R
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.DepartmentBean
 import com.wd.doctor.bean.JobTitleListBean
 import com.wd.doctor.bean.MessageBean
 import com.wd.doctor.customview.MyEditText
+import com.wd.doctor.mvp.checkcode.CheckCodePresenter
+import com.wd.doctor.mvp.checkcode.ICheckCodeContract
 import com.wd.doctor.mvp.department.DepartmentPresenter
 import com.wd.doctor.mvp.department.IDepartmentContract
 import com.wd.doctor.mvp.jobtitlelist.IJobTitleListContract
@@ -30,13 +35,16 @@ import kotlinx.android.synthetic.main.view_edit.view.*
 import kotlinx.android.synthetic.main.view_edit.view.tvTitle
 import kotlinx.android.synthetic.main.view_spring.view.*
 import org.jetbrains.anko.hintTextColor
+import org.jetbrains.anko.textColor
 
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
  * @version 创建时间：2020/5/18 0018 15:41
  * @Description: 用途：申请入驻
  */
-class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IView {
+class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IView,
+    ICheckCodeContract.IView {
+
     var i = 60
     var handler = object :Handler(){
         override fun handleMessage(msg: Message) {
@@ -71,9 +79,12 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
         return R.layout.activity_settle
     }
     var help:Boolean = false
+    val codePresenter by lazy { CheckCodePresenter(this) }
+    var code = false
+    var text = ""
 
     override fun initLintener() {
-
+        editCode.editText?.editText?.maxLines=6
         //下一步
         tvNext.setOnClickListener(this)
         //获取验证码
@@ -105,28 +116,53 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
             }
 
         })
+        editCode.editText?.addTextChangedListener(object :TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
 
+            }
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                println("11111111")
+                if(editCode.editText?.editText?.length()==6){
+                    //校验验证码
+                    editCode.editText?.editText?.textColor = Color.BLACK
+                    codePresenter.checkCode(editEmil.editText?.text.toString(),editCode.editText?.text.toString())
+                }else{
+                    editCode.editText?.editText?.textColor = Color.RED
+                    text = "111"
+                }
+            }
+
+        })
 
     }
+
 
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.tvNext->{
                     if (notNull()) {
-                         startActivity(Intent(this,SettleTwoActivity::class.java))
-                         overridePendingTransition(R.anim.zoomin,R.anim.zoomout)
+
+                        if(text.equals("验证通过")){
+                            startActivity(Intent(this,SettleTwoActivity::class.java))
+                            overridePendingTransition(R.anim.zoomin,R.anim.zoomout)
+                        }
+
                      }
                 }
 
             R.id.getCode->{
                 //获取验证码
+                text = "111"
                 if (getCode.text.toString().equals("获取验证码")||getCode.text.toString().equals("重新发送验证码")) {
                     if (!stringNotNull(editEmil.editText?.text.toString())) {
                         var presenter = SendEmilPresenter(this)
                         presenter.sendEmailCode(editEmil.editText?.text.toString())
                     }else{
-                        editEmil.editText?.editText?.hint = "账号暂未输入"
+                        editEmil.editText?.editText?.hint = text
                         editEmil.editText?.editText?.hintTextColor = Color.RED
                     }
                 }
@@ -150,9 +186,15 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
             editEmil.editText?.editText?.hintTextColor = Color.RED
             help == false
         }else{
-            //存储
-            spUtil.putString(SpKey.EMAIL,editEmil.editText?.text.toString())
-            i++
+            val contains = editEmil.editText?.text?.contains(".com")
+            if(contains!!){
+                //存储
+                spUtil.putString(SpKey.EMAIL,editEmil.editText?.text.toString())
+                i++
+            }else{
+                myToast("邮箱格式好像不对")
+            }
+
         }
         if (stringNotNull(editCode.editText?.text.toString())){
             //为空
@@ -227,5 +269,18 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
         super.onDestroy()
         handler.removeCallbacksAndMessages(null)
     }
+    override fun onCheckSuccess(bean: MessageBean) {
+        val message = bean.message
+        if(message.equals("验证通过")){
+            text = "验证通过"
+        }else{
+            editCode.editText?.editText?.setText("")
+            editCode.editText?.editText?.hint = message
+            editCode.editText?.editText?.hintTextColor = Color.RED
+        }
+    }
 
+    override fun onCheckFailed(error: String) {
+
+    }
 }

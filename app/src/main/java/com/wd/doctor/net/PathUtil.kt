@@ -31,4 +31,9 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/v1/login"
         return path
     }
+    //校验验证码
+    fun checkCode():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/v1/checkCode"
+        return path
+    }
 }
