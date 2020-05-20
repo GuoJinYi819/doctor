@@ -36,4 +36,9 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/v1/checkCode"
         return path
     }
+    //重置密码
+    fun resetUserPwd():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/v1/resetUserPwd"
+        return path
+    }
 }

@@ -41,5 +41,9 @@ interface ApiService {
     @FormUrlEncoded
     fun checkCode(@Url path:String, @Field("email") email:String, @Field("code")code:String):Observable<MessageBean>
 
+    //重置密码
+    @PUT
+    fun resetUserPwd(@Url path:String,@FieldMap params:Map<String,String>):Observable<MessageBean>
+
 
 }

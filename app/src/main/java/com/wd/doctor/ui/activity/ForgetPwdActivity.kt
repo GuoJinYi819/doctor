@@ -2,7 +2,11 @@ package com.wd.doctor.ui.activity
 
 import android.os.Handler
 import android.os.Message
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
+import android.text.method.PasswordTransformationMethod
+import android.view.View
 import com.wd.doctor.R
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.MessageBean
@@ -47,19 +51,42 @@ class ForgetPwdActivity:BaseActivity(), ISendEmailContract.IView {
 
     override fun initLintener() {
         getCode.setOnClickListener {
-            val email = editEmail.text.toString()
-            val presenter = SendEmilPresenter(this)
-            presenter.sendEmailCode(email)
-            handler.sendEmptyMessageDelayed(1,1000)
+            if(!TextUtils.isEmpty(editEmail.text.toString())){
+                val email = editEmail.text.toString()
+                val presenter = SendEmilPresenter(this)
+                presenter.sendEmailCode(email)
+                handler.sendEmptyMessageDelayed(1,1000)
+            }else{
+                myToast("邮箱账号还没输入呢")
+            }
+
         }
 
         btnNext.setOnClickListener {
-            val email = editEmail.text.toString()
-            val pwd = editCode.text.toString()
-            if(TextUtils.isEmpty(email)&&TextUtils.isEmpty(pwd)){
-                myToast("账号或密码为空")
-            }else{
+            val next = btnNext.text.toString()
+            if(next.equals("下一步")){
 
+                if(TextUtils.isEmpty(editEmail.text.toString())){
+                    myToast("账号还没输入")
+                }else{
+                    editEmail.hint = "请输入新密码"
+                    editEmail.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    editCode.hint = "请再次输入新密码"
+                    editCode.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    getCode.visibility = View.GONE
+                    btnNext.text = "完成"
+                }
+
+            }else if(next.equals("完成")){
+                val email = editEmail.text.toString()
+                val pwd = editCode.text.toString()
+                if(TextUtils.isEmpty(email)&&TextUtils.isEmpty(pwd)){
+                    myToast("账号或密码为空")
+                }else{
+
+                    myToast("修改完成")
+                    finish()
+                }
             }
         }
     }
