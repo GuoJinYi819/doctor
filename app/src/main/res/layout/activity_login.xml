@@ -38,6 +38,7 @@
         android:layout_marginTop="42dp"
         android:background="@null"
         android:hint="请输入邮箱账号"
+        android:maxLines="15"
         android:textSize="14sp"
         android:textColor="#999999"
         android:layout_width="wrap_content"
@@ -77,8 +78,10 @@
         android:layout_marginTop="32dp"
         android:background="@null"
         android:hint="请输入密码"
+        android:password="true"
         android:textSize="14sp"
         android:textColor="#999999"
+        android:maxLines="8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -86,13 +89,13 @@
 
     <ImageView
         android:id="@+id/iv_hide"
-        android:src="@mipmap/login_icon_hide_password_n"
+        android:background="@mipmap/login_icon_hide_password_n"
         app:layout_constraintTop_toBottomOf="@id/vv"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="35dp"
         android:layout_marginTop="32dp"
-        android:layout_width="16dp"
-        android:layout_height="16dp">
+        android:layout_width="20dp"
+        android:layout_height="12dp">
 
     </ImageView>
 
@@ -134,6 +137,7 @@
     </TextView>
 
     <Button
+        android:id="@+id/btnLogin"
         android:background="@drawable/buttom"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="30dp"

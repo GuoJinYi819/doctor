@@ -22,6 +22,7 @@ import com.wd.doctor.mvp.jobtitlelist.IJobTitleListContract
 import com.wd.doctor.mvp.jobtitlelist.JobTitlePresenter
 import com.wd.doctor.mvp.sendemailcode.ISendEmailContract
 import com.wd.doctor.mvp.sendemailcode.SendEmilPresenter
+import com.wd.doctor.utils.RsaCoder
 import com.wd.doctor.utils.SpKey
 import com.wd.doctor.utils.SpUtil
 import kotlinx.android.synthetic.main.activity_settle.*
@@ -168,7 +169,10 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
             editPwd_1.editText?.editText?.hintTextColor = Color.RED
             help == false
         }else{
-            spUtil.putString(SpKey.PWD1,editPwd_1.editText?.text.toString())
+            //加密
+            val pwd1 = editPwd_1.editText?.text.toString()
+            val pwd = RsaCoder.encryptByPublicKey(pwd1)
+            spUtil.putString(SpKey.PWD1,pwd)
             i++
         }
 
@@ -184,7 +188,9 @@ class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IV
                 editPwd_2.editText?.editText?.hint = "与第一次密码不一致"
                 editPwd_2.editText?.editText?.hintTextColor = Color.RED
             }else{
-                spUtil.putString(SpKey.PWD2,editPwd_2.editText?.text.toString())
+                val pwd1 = editPwd_2.editText?.text.toString()
+                val pwd = RsaCoder.encryptByPublicKey(pwd1)
+                spUtil.putString(SpKey.PWD2,pwd)
                 help = true
                 i++
             }
