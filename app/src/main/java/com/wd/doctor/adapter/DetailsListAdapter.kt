@@ -13,7 +13,9 @@ import com.wd.doctor.itemview.MyDetailsItemView
  */
 class DetailsListAdapter : RecyclerView.Adapter<DetailsListAdapter.MyDetailsHolder>() {
    var list = ArrayList<SickCircleListBean.ResultBean>()
+
     fun setData(list: List<SickCircleListBean.ResultBean>){
+        this.list.clear()
         this.list.addAll(list)
         notifyDataSetChanged()
     }
@@ -33,7 +35,13 @@ class DetailsListAdapter : RecyclerView.Adapter<DetailsListAdapter.MyDetailsHold
 
     }
 
+    fun addData(result: List<SickCircleListBean.ResultBean>) {
+        if(result.size>0){
+            list.addAll(result)
 
+        }
+        notifyDataSetChanged()
+    }
 
 
     class MyDetailsHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
