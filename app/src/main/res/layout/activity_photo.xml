@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <RelativeLayout
+       android:padding="20dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <TextView
+           android:textSize="18sp"
+           android:textColor="#1E90FF"
+           android:text="为您设置一张证件照吧"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+
+       </TextView>
+       <TextView
+           android:id="@+id/tvBack"
+           android:layout_alignParentRight="true"
+           android:text="跳过"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+
+       </TextView>
+   </RelativeLayout>
+
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+    </ImageView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/buttom"
+            android:layout_width="match_parent"
+            android:text="完成设置"
+            android:layout_height="40dp">
+
+        </Button>
+    </RelativeLayout>
+
+</LinearLayout>

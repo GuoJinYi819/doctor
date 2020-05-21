@@ -114,8 +114,15 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
     override fun onLoginSuccess(bean: LoginBean) {
         if (bean.message!!.contains("登录成功")) {
             val result = bean.result
-            
-            startActivityFinish<HomePagerActivity>()
+            result?.let {
+                val whetherHaveImagePic = it.whetherHaveImagePic
+                if(whetherHaveImagePic==1){
+                    startActivityFinish<HomePagerActivity>()
+                }else{
+                    startActivityFinish<PhotoActivity>()
+                }
+            }
+
         }else if(bean.message!!.contains("登录失败，账号或密码错误")){
             editPwd.setText("")
             editPwd.hint = "密码输入错误"

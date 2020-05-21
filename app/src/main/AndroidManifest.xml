@@ -25,6 +25,7 @@
         <activity android:name=".ui.activity.SettleOrverActivity"/>
         <activity android:name=".ui.activity.HomePagerActivity"/>
         <activity android:name=".ui.activity.ForgetPwdActivity"/>
+        <activity android:name=".ui.activity.PhotoActivity"/>
     </application>
 
 </manifest>

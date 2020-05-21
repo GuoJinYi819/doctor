@@ -6,7 +6,7 @@ import com.wd.doctor.base.BaseActivity
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
  * @version 创建时间：2020/5/20 0020 15:57
- * @Description: 用途：完成特定功能
+ * @Description: 用途：主页
  */
 class HomePagerActivity:BaseActivity() {
     override fun initLayoutId(): Int {
