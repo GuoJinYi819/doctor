@@ -49,7 +49,7 @@ interface ApiService {
 
     //上传图片
     @POST
-    @FormUrlEncoded
-    fun uploadImagePic(@Url path:String,@Field("imagePic") imagePic:File):Observable<MessageBean>
+    @Multipart
+    fun uploadImagePic(@Url path:String,@Part imagePic:MultipartBody.Part):Observable<MessageBean>
 
 }

@@ -1,5 +1,6 @@
 package com.wd.doctor.net
 
+import android.text.TextUtils
 import com.wd.doctor.utils.SpKey
 import com.wd.doctor.utils.SpUtil
 import okhttp3.Interceptor
@@ -35,9 +36,16 @@ class RetrofitUtil {
                     val newBuilder = request.newBuilder()
                     newBuilder.addHeader("Accept", "application/json")
                     newBuilder.addHeader("Content-Type", "application/json")
-                    newBuilder.addHeader(SpKey.DOCTORID,spUtil.getInt(SpKey.DOCTORID).toString())
+                    val int = spUtil.getInt(SpKey.DOCTORID)
+                    if(int!=-1){
+                        newBuilder.addHeader(SpKey.DOCTORID,int.toString())
+                    }
+
                     val session = spUtil.getString(SpKey.SESSIONID)
-                    newBuilder.addHeader(SpKey.SESSIONID,session!!)
+                    if (!TextUtils.isEmpty(session)) {
+                        newBuilder.addHeader(SpKey.SESSIONID,session!!)
+                    }
+
                     val newRequest = newBuilder.build()
                     return chain.proceed(newRequest)
                 }
