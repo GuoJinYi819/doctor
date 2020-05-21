@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="#FFFFFF"
     android:layout_height="match_parent">
     <RelativeLayout
         android:background="#FFFFFF"
@@ -68,7 +69,7 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:background="#FFF"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

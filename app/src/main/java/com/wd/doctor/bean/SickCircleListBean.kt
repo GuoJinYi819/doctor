@@ -10,7 +10,7 @@ import java.io.Serializable
 class SickCircleListBean:Serializable {
     var status:String? = null
     var message:String? = null
-    var result:ResultBean? = null
+    var result:List<ResultBean>? = null
     class ResultBean:Serializable{
         var sickCircleId:Int? = 0  //病友圈id
         var title:String? = null  //标题
