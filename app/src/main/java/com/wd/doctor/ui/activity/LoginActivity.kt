@@ -12,8 +12,11 @@ import com.wd.doctor.bean.LoginBean
 import com.wd.doctor.mvp.login.ILoginContract
 import com.wd.doctor.mvp.login.LoginPresenter
 import com.wd.doctor.utils.RsaCoder
+import com.wd.doctor.utils.SpKey
+import com.wd.doctor.utils.SpUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.hintTextColor
+import org.jetbrains.anko.sp
 import org.jetbrains.anko.textColor
 
 /**ClassName: Doctor
@@ -115,6 +118,14 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
         if (bean.message!!.contains("登录成功")) {
             val result = bean.result
             result?.let {
+
+                //存储id
+                val spUtil = SpUtil.getSpUtil()
+                val id = result.id
+                val sessionId = result.sessionId
+                spUtil.putInt(SpKey.DOCTORID,id!!)
+                spUtil.putString(SpKey.SESSIONID,sessionId!!)
+
                 val whetherHaveImagePic = it.whetherHaveImagePic
                 if(whetherHaveImagePic==1){
                     startActivityFinish<HomePagerActivity>()

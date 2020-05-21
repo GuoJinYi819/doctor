@@ -2,8 +2,10 @@ package com.wd.doctor.net
 
 import com.wd.doctor.bean.*
 import io.reactivex.Observable
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
+import java.io.File
 import java.io.Serializable
 
 /**ClassName: Doctor
@@ -45,5 +47,9 @@ interface ApiService {
     @PUT
     fun resetUserPwd(@Url path:String,@FieldMap params:Map<String,String>):Observable<MessageBean>
 
+    //上传图片
+    @POST
+    @FormUrlEncoded
+    fun uploadImagePic(@Url path:String,@Field("imagePic") imagePic:File):Observable<MessageBean>
 
 }

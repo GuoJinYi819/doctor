@@ -30,7 +30,7 @@ class LoginModel:ILoginContract.IModule {
                     }
 
                     override fun onError(e: Throwable?) {
-                        callBack.onLoginFailed(e?.message!!)
+                        //callBack.onLoginFailed(e?.message)
                     }
 
                 })

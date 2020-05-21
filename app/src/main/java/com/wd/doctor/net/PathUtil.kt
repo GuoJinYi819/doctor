@@ -41,4 +41,9 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/v1/resetUserPwd"
         return path
     }
+    //上传形象照
+    fun uploadImagePic():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/verify/v1/uploadImagePic"
+        return path
+    }
 }

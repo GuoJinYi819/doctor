@@ -18,4 +18,8 @@ object SpKey {
     val PERSONALPROFILE = "personalProfile" //个人简介
     val GOODFIELD = "goodField" //擅长领域
 
+
+    val DOCTORID = "doctorId" //医生id
+    val SESSIONID = "sessionId" //sessionIdid
+
 }

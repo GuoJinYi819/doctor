@@ -1,5 +1,7 @@
 package com.wd.doctor.net
 
+import com.wd.doctor.utils.SpKey
+import com.wd.doctor.utils.SpUtil
 import okhttp3.Interceptor
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -19,6 +21,7 @@ import java.util.concurrent.TimeUnit
 class RetrofitUtil {
 
     private var retrofit:Retrofit? = null
+    private var spUtil = SpUtil.getSpUtil()
 
     private constructor(){
         //初始化okhttp
@@ -32,6 +35,9 @@ class RetrofitUtil {
                     val newBuilder = request.newBuilder()
                     newBuilder.addHeader("Accept", "application/json")
                     newBuilder.addHeader("Content-Type", "application/json")
+                    newBuilder.addHeader(SpKey.DOCTORID,spUtil.getInt(SpKey.DOCTORID).toString())
+                    val session = spUtil.getString(SpKey.SESSIONID)
+                    newBuilder.addHeader(SpKey.SESSIONID,session!!)
                     val newRequest = newBuilder.build()
                     return chain.proceed(newRequest)
                 }
