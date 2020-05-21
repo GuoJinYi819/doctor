@@ -23,8 +23,10 @@ class HomePagerActivity:BaseActivity(), IFindDoctorByIdContract.IView {
     }
 
     override fun initLintener() {
+        //答疑界面
         relativeConsultation.setOnClickListener {
             startActivity(Intent(this,ConsultationActivity::class.java))
+            overridePendingTransition(R.anim.z1,R.anim.z0)
         }
     }
 
@@ -54,6 +56,11 @@ class HomePagerActivity:BaseActivity(), IFindDoctorByIdContract.IView {
     }
 
     override fun onFindDoctorFailed(error: String) {
+
+    }
+
+    override fun finish() {
+        super.finish()
 
     }
 }

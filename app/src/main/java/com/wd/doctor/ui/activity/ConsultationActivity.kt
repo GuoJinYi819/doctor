@@ -45,4 +45,9 @@ class ConsultationActivity:BaseActivity(), IDepartmentContract.IView {
 
     override fun onFailed(error: String) {
     }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.z1,R.anim.z0)
+    }
 }

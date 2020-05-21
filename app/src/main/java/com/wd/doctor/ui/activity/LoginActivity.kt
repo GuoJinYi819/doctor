@@ -129,6 +129,7 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
                 val whetherHaveImagePic = it.whetherHaveImagePic
                 if(whetherHaveImagePic==1){
                     startActivityFinish<HomePagerActivity>()
+                    overridePendingTransition(R.anim.s0,R.anim.s1)
                 }else{
                     startActivityFinish<PhotoActivity>()
                 }
