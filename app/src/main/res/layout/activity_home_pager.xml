@@ -32,7 +32,6 @@
                 </ImageView>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/relativeConsultation"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:layout_width="match_parent"
@@ -59,6 +58,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/relativeConsultation"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"

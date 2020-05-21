@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 import com.wd.doctor.R
 import com.wd.doctor.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_details.*
 
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
@@ -20,5 +21,9 @@ class DetailsFragment:BaseFragment() {
     }
 
     override fun initData() {
+        val departmentId = arguments?.getInt("departmentId")
+        println("${departmentId}")
+        ttt.text = departmentId.toString()
     }
+
 }
