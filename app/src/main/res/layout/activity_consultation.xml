@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivBack"
+            android:src="@mipmap/common_icon_back_black_n"
+            android:layout_width="22dp"
+            android:layout_height="22dp">
+
+        </ImageView>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/common_nav_message_black_n"
+            android:layout_width="22dp"
+            android:layout_height="22dp">
+
+        </ImageView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            app:tabTextColor="#666"
+            android:background="#FFFFFF"
+            app:tabIndicatorColor="#FFF"
+            app:tabMode="scrollable"
+            app:tabGravity="center"
+            app:tabSelectedTextColor="#1E90FF"
+            android:layout_weight="8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+        </com.google.android.material.tabs.TabLayout>
+        <View
+            android:background="#666"
+            android:layout_width="2dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="40dp">
+
+        </View>
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/ivSeach"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/common_icon_search_n"
+                android:layout_width="25dp"
+                android:layout_height="25dp">
+
+            </ImageView>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_marginTop="10dp"
+        android:background="#FFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+package com.wd.doctor.ui.activity
+
+import com.wd.doctor.R
+import com.wd.doctor.base.BaseActivity
+import com.wd.doctor.bean.DepartmentBean
+import com.wd.doctor.mvp.department.DepartmentPresenter
+import com.wd.doctor.mvp.department.IDepartmentContract
+
+/**ClassName: Doctor
+ * @author 作者 : GuoJinYi
+ * @version 创建时间：2020/5/21 0021 17:29
+ * @Description: 用途：问诊界面
+ */
+class ConsultationActivity:BaseActivity(), IDepartmentContract.IView {
+
+    //科室列表
+    val presenter by lazy { DepartmentPresenter(this) }
+    override fun initLayoutId(): Int {
+        return R.layout.activity_consultation
+    }
+
+    override fun initLintener() {
+    }
+
+    override fun initData() {
+    }
+
+    //科室列表
+    override fun onDepartmentSuccess(bean: DepartmentBean) {
+
+    }
+
+    override fun onFailed(error: String) {
+    }
+}

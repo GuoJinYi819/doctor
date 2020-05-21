@@ -1,5 +1,6 @@
 package com.wd.doctor.ui.activity
 
+import android.content.Intent
 import com.bumptech.glide.Glide
 import com.wd.doctor.App
 import com.wd.doctor.R
@@ -22,7 +23,9 @@ class HomePagerActivity:BaseActivity(), IFindDoctorByIdContract.IView {
     }
 
     override fun initLintener() {
-
+        relativeConsultation.setOnClickListener {
+            startActivity(Intent(this,ConsultationActivity::class.java))
+        }
     }
 
     override fun initData() {
