@@ -51,4 +51,9 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/verify/v1/findDoctorById"
         return path
     }
+    //病友圈相关接口
+    fun findSickCircleList():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/sickCircle/v1/findSickCircleList"
+        return path
+    }
 }
