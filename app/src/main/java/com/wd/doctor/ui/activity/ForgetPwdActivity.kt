@@ -33,7 +33,7 @@ class ForgetPwdActivity:BaseActivity(), ISendEmailContract.IView {
         return R.layout.activity_forget_pwd
     }
 
-    var i = 60
+    var i = 120
     var handler = object :Handler(){
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)

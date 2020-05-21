@@ -46,4 +46,9 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/verify/v1/uploadImagePic"
         return path
     }
+    //查询医生信息
+    fun findDoctorById():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/verify/v1/findDoctorById"
+        return path
+    }
 }

@@ -94,6 +94,9 @@ class PhotoActivity:BaseActivity() {
 
                         override fun onNext(value: MessageBean?) {
                             println(value?.message)
+                            if(value?.message?.contains("成功")!!){
+                                startActivityFinish<HomePagerActivity>()
+                            }
                         }
 
                         override fun onError(e: Throwable?) {

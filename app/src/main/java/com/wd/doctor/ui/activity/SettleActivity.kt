@@ -45,7 +45,7 @@ import org.jetbrains.anko.textColor
 class SettleActivity:BaseActivity(), View.OnClickListener, ISendEmailContract.IView,
     ICheckCodeContract.IView {
 
-    var i = 60
+    var i = 120
     var handler = object :Handler(){
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)

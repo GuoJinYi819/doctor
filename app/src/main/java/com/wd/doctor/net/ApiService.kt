@@ -52,4 +52,7 @@ interface ApiService {
     @Multipart
     fun uploadImagePic(@Url path:String,@Part imagePic:MultipartBody.Part):Observable<MessageBean>
 
+    //查询医生信息
+    @GET
+    fun findDoctorById(@Url path:String):Observable<LoginBean>
 }

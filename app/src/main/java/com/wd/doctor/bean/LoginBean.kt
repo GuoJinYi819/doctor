@@ -24,6 +24,9 @@ class LoginBean:Serializable{
         var sessionId:String? = null
         var userName:String? = null
         var whetherHaveImagePic:Int = 0
+        var imagePic:String? = null
+        var personalProfile:String? = null
+        var goodField:String? = null
 
     }
 }
