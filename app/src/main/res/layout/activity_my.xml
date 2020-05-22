@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivBack"
+            android:src="@mipmap/common_icon_back_black_n"
+            android:layout_width="22dp"
+            android:layout_height="22dp">
+
+        </ImageView>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/common_nav_message_black_n"
+            android:layout_width="22dp"
+            android:layout_height="22dp">
+
+        </ImageView>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

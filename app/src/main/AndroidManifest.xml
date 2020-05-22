@@ -31,6 +31,7 @@
         <activity android:name=".ui.activity.ConsultationActivity"/>
         <activity android:name=".ui.activity.SickCircleInfoActivity"/>
         <activity android:name=".ui.activity.AskActivity"/>
+        <activity android:name=".ui.activity.MyActivity"/>
     </application>
 
 </manifest>

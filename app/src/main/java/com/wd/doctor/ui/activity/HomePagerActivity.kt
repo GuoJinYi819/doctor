@@ -33,6 +33,11 @@ class HomePagerActivity:BaseActivity(), IFindDoctorByIdContract.IView {
             startActivity(Intent(this,AskActivity::class.java))
             overridePendingTransition(R.anim.z1,R.anim.z0)
         }
+        //我的界面
+        relativeMessage.setOnClickListener {
+            startActivity(Intent(this,MyActivity::class.java))
+            overridePendingTransition(R.anim.z1,R.anim.z0)
+        }
     }
 
     override fun initData() {

@@ -23,6 +23,9 @@ class AskActivity:BaseActivity(), IInquiryRecordListContract.IView {
     }
 
     override fun initLintener() {
+        ivBack.setOnClickListener {
+            finish()
+        }
     }
 
     override fun initData() {
