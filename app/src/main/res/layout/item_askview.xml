@@ -1,70 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:paddingTop="6dp"
-    android:paddingBottom="6dp"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/ivUserHeadPic"
-        android:layout_width="80dp"
-        android:layout_height="80dp">
-
-    </ImageView>
     <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical"
-        android:layout_weight="7"
-        android:layout_width="0dp"
-        android:layout_height="80dp">
-        <TextView
-            android:id="@+id/tvNickName"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:text="陈乔恩"
-            android:singleLine="true"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp">
-
-        </TextView>
-        <TextView
-            android:singleLine="true"
-            android:id="@+id/tvlastContent"
-            android:textColor="#666"
-            android:textSize="16sp"
-            android:text="陈乔恩"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp">
-
-        </TextView>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical"
-        android:layout_weight="3"
-        android:layout_width="0dp"
-        android:layout_height="80dp">
-        <TextView
-            android:singleLine="true"
-            android:id="@+id/tvTime"
-            android:textColor="#666"
-            android:textSize="16sp"
-            android:text="2019/03/02"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp">
-
-        </TextView>
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <ImageView
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp">
+            android:id="@+id/ivUserHeadPic"
+            android:layout_width="80dp"
+            android:layout_height="60dp">
 
         </ImageView>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:layout_height="60dp">
+            <TextView
+                android:id="@+id/tvNickName"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:text="陈乔恩"
+                android:singleLine="true"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp">
 
+            </TextView>
+            <TextView
+                android:singleLine="true"
+                android:id="@+id/tvlastContent"
+                android:textColor="#666"
+                android:textSize="16sp"
+                android:text="陈乔恩"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="60dp">
+            <TextView
+                android:singleLine="true"
+                android:id="@+id/tvTime"
+                android:textColor="#666"
+                android:textSize="12sp"
+                android:text="2019/03/02"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+
+            </TextView>
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+
+            </ImageView>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_marginTop="8dp"
+        android:background="#C1CDC1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+
+    </View>
 </LinearLayout>

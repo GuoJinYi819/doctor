@@ -4,6 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wd.doctor.bean.PublicBean
+import com.wd.doctor.bean.PublicListBean
 import com.wd.doctor.itemview.MyAskItemView
 
 /**ClassName: Doctor
@@ -12,9 +13,11 @@ import com.wd.doctor.itemview.MyAskItemView
  * @Description: 用途：完成特定功能
  */
 class AskAdapter:RecyclerView.Adapter<AskAdapter.MyAskHolder>() {
-    var list = ArrayList<PublicBean.ResultBean>()
+    var list = ArrayList<PublicListBean.ResultBean>()
 
-
+    fun setData(result: List<PublicListBean.ResultBean>) {
+        this.list.addAll(result)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAskHolder {
         return MyAskHolder(MyAskItemView(parent.context))
@@ -25,7 +28,9 @@ class AskAdapter:RecyclerView.Adapter<AskAdapter.MyAskHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyAskHolder, position: Int) {
-
+        val resultBean = list.get(position)
+        var itemView = holder.itemView as MyAskItemView
+        itemView.setView(resultBean)
     }
 
 

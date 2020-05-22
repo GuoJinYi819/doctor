@@ -35,6 +35,9 @@ class AskActivity:BaseActivity(), IInquiryRecordListContract.IView {
     //问诊列表界面
     override fun onInquiryRecordSuccess(bean: PublicListBean) {
         val result = bean.result
+        result?.let {
+            adapter.setData(it)
+        }
 
     }
     override fun onInquiryRecordFailed(error: String) {
