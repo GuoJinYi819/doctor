@@ -66,5 +66,5 @@ interface ApiService {
 
     //查询医生的问诊记录列表
     @GET
-    fun getInquiryRecordList(@Url path:String):Observable<PublicBean>
+    fun getInquiryRecordList(@Url path:String):Observable<PublicListBean>
 }

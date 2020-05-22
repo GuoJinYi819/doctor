@@ -2,8 +2,10 @@ package com.wd.doctor.ui.activity
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wd.doctor.R
+import com.wd.doctor.adapter.AskAdapter
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.PublicBean
+import com.wd.doctor.bean.PublicListBean
 import com.wd.doctor.mvp.inquiryrecordlist.IInquiryRecordListContract
 import com.wd.doctor.mvp.inquiryrecordlist.InquiryRecordPresenter
 import kotlinx.android.synthetic.main.activity_ask.*
@@ -14,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_ask.*
  * @Description: 用途：问诊界面
  */
 class AskActivity:BaseActivity(), IInquiryRecordListContract.IView {
-
+    val adapter by lazy { AskAdapter() }
     val presenter by lazy { InquiryRecordPresenter(this) }
     override fun initLayoutId(): Int {
         return R.layout.activity_ask
@@ -28,10 +30,12 @@ class AskActivity:BaseActivity(), IInquiryRecordListContract.IView {
         presenter.getInquiryRecordList()
         //设置布局管理器
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
     }
     //问诊列表界面
-    override fun onInquiryRecordSuccess(bean: PublicBean) {
-        println(bean.toString())
+    override fun onInquiryRecordSuccess(bean: PublicListBean) {
+        val result = bean.result
+
     }
     override fun onInquiryRecordFailed(error: String) {
     }

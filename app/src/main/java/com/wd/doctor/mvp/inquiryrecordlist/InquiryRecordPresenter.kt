@@ -1,6 +1,7 @@
 package com.wd.doctor.mvp.inquiryrecordlist
 
 import com.wd.doctor.bean.PublicBean
+import com.wd.doctor.bean.PublicListBean
 
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
@@ -11,7 +12,7 @@ class InquiryRecordPresenter(var view:IInquiryRecordListContract.IView):IInquiry
     val model = InquiryRecordModel()
     override fun getInquiryRecordList() {
         model.getInquiryRecordList(object :IInquiryRecordListContract.IModel.ModelCallBack{
-            override fun onInquiryRecordSuccess(bean: PublicBean) {
+            override fun onInquiryRecordSuccess(bean: PublicListBean) {
                 view.onInquiryRecordSuccess(bean)
             }
 

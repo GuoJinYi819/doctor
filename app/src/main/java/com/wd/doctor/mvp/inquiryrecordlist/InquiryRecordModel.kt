@@ -1,6 +1,7 @@
 package com.wd.doctor.mvp.inquiryrecordlist
 
 import com.wd.doctor.bean.PublicBean
+import com.wd.doctor.bean.PublicListBean
 import com.wd.doctor.net.PathUtil
 import com.wd.doctor.net.RetrofitUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -21,12 +22,12 @@ class InquiryRecordModel:IInquiryRecordListContract.IModel {
             val observable = it.getInquiryRecordList(PathUtil.getInquiryRecordList())
             observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object :DisposableObserver<PublicBean>(){
+                .subscribe(object :DisposableObserver<PublicListBean>(){
                     override fun onComplete() {
 
                     }
 
-                    override fun onNext(value: PublicBean?) {
+                    override fun onNext(value: PublicListBean?) {
                         callback.onInquiryRecordSuccess(value!!)
                     }
 

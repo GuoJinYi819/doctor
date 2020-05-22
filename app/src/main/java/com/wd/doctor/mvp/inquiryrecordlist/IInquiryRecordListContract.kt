@@ -2,6 +2,7 @@ package com.wd.doctor.mvp.inquiryrecordlist
 
 import com.wd.doctor.base.IBaseView
 import com.wd.doctor.bean.PublicBean
+import com.wd.doctor.bean.PublicListBean
 
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
@@ -10,13 +11,13 @@ import com.wd.doctor.bean.PublicBean
  */
 interface IInquiryRecordListContract {
     interface IView:IBaseView{
-        fun onInquiryRecordSuccess(bean: PublicBean)
+        fun onInquiryRecordSuccess(bean: PublicListBean)
         fun onInquiryRecordFailed(error:String)
     }
     interface IModel{
         fun getInquiryRecordList(callback: ModelCallBack)
         interface ModelCallBack{
-            fun onInquiryRecordSuccess(bean: PublicBean)
+            fun onInquiryRecordSuccess(bean: PublicListBean)
             fun onInquiryRecordFailed(error:String)
         }
     }
