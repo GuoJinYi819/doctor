@@ -1,7 +1,11 @@
 package com.wd.doctor.ui.activity
 
+import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
 import com.bumptech.glide.Glide
 import com.wd.doctor.R
+import com.wd.doctor.adapter.MyFourAdapter
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.LoginBean
 import com.wd.doctor.mvp.finddoctorbyId.FindDoctorByIdPresenter
@@ -30,6 +34,7 @@ class MyActivity:BaseActivity(), IFindDoctorByIdContract.IView {
     override fun initData() {
         //查询个人信息
         presenter.getMessage()
+        gridView.adapter = MyFourAdapter(this)
     }
     //个人信息
     override fun onFindDoctorSuccess(bean: LoginBean) {
