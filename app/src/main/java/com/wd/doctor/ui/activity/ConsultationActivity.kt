@@ -23,6 +23,9 @@ class ConsultationActivity:BaseActivity(), IDepartmentContract.IView {
     }
 
     override fun initLintener() {
+        ivBack.setOnClickListener {
+            finish()
+        }
     }
 
     override fun initData() {

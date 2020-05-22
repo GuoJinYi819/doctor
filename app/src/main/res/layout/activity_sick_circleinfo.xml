@@ -111,7 +111,7 @@
                 </RelativeLayout>
                 <TextView
                     android:layout_marginTop="5dp"
-                    android:id="@+id/tvText"
+                    android:id="@+id/tvTreatmentProcess"
                     android:text="面神经炎"
                     android:textColor="#000"
                     android:textSize="16sp"
@@ -121,6 +121,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/tvImag"
                     android:layout_marginTop="20dp"
                     android:text="[相关图片]"
                     android:textColor="#1E90FF"
@@ -131,6 +132,7 @@
 
                 </TextView>
                 <ImageView
+                    android:id="@+id/ivImg"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:background="@mipmap/ic_launcher"
