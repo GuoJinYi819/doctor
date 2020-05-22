@@ -30,6 +30,7 @@
         <activity android:name=".ui.activity.PhotoActivity"/>
         <activity android:name=".ui.activity.ConsultationActivity"/>
         <activity android:name=".ui.activity.SickCircleInfoActivity"/>
+        <activity android:name=".ui.activity.AskActivity"/>
     </application>
 
 </manifest>

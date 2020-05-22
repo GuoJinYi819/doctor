@@ -18,9 +18,14 @@ class PublicBean:Serializable{
         var id:Int? = 0
         var userId:Int? = 0
         var amount:Int? = 0
+        var status:Int? = 0
         var whetherContent:Int? = 0
         var authorName:String? = null
         var content:String? = null
+        var userHeadPic:String? = null
+        var doctorHeadPic:String? = null
+        var lastContent:String? = null
+        var nickName:String? = null
         var title:String? = null
         var disease:String? = null
         var detail:String? = null
@@ -28,6 +33,7 @@ class PublicBean:Serializable{
         var treatmentProcess:String? = null
         var picture:String? = null
         var treatmentStartTime:Long? = 0L
+        var inquiryTime:Long? = 0L
         var treatmentEndTime:Long? = 0L
 
 

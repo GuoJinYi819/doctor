@@ -61,4 +61,9 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/sickCircle/v1/findSickCircleInfo"
         return path
     }
+    //查询医生的问诊记录列表
+    fun getInquiryRecordList():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/inquiry/verify/v1/findInquiryRecordList"
+        return path
+    }
 }

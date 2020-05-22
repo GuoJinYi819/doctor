@@ -28,6 +28,11 @@ class HomePagerActivity:BaseActivity(), IFindDoctorByIdContract.IView {
             startActivity(Intent(this,ConsultationActivity::class.java))
             overridePendingTransition(R.anim.z1,R.anim.z0)
         }
+        //问诊界面
+        relativeWen.setOnClickListener {
+            startActivity(Intent(this,AskActivity::class.java))
+            overridePendingTransition(R.anim.z1,R.anim.z0)
+        }
     }
 
     override fun initData() {

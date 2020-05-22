@@ -32,6 +32,7 @@
                 </ImageView>
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/relativeWen"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:layout_width="match_parent"
