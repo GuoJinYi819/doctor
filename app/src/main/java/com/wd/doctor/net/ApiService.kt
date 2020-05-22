@@ -59,4 +59,8 @@ interface ApiService {
     //病友圈列表展示
     @GET
     fun findSickCircleList(@Url path: String,@QueryMap params: Map<String, String>):Observable<SickCircleListBean>
+
+    //病友圈单列表详情
+    @GET
+    fun findSickCircleInfo(@Url path:String,@Query("sickCircleId")sickCircleId:Int):Observable<PublicBean>
 }

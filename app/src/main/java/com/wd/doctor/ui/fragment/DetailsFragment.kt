@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_details.*
  */
 class DetailsFragment:BaseFragment(), IFindSickCircleListContract.IView {
     val presenter by lazy { FindSickCirclePresenter(this) }
-    val adapter by lazy { DetailsListAdapter() }
+    val adapter by lazy { DetailsListAdapter(context!!) }
     var help:Int = 1
     var a:Int =0
     override fun initView(): View? {
@@ -38,7 +38,6 @@ class DetailsFragment:BaseFragment(), IFindSickCircleListContract.IView {
                 hashMap.put("page","${help}")
                 hashMap.put("count","5")
                 a = 2
-                println("上拉加载---${a}")
                 presenter.getSickCircleData(hashMap)
 
                 pullToRefreshLayout.finishLoadMore()
@@ -52,7 +51,6 @@ class DetailsFragment:BaseFragment(), IFindSickCircleListContract.IView {
                 hashMap.put("page","1")
                 hashMap.put("count","5")
                 a = 1
-                println("下拉刷新--${a}")
                 presenter.getSickCircleData(hashMap)
                 pullToRefreshLayout.finishRefresh()
             }
@@ -76,10 +74,8 @@ class DetailsFragment:BaseFragment(), IFindSickCircleListContract.IView {
     //获取病友圈列表展示
     override fun onSickCircleSuccess(bean: SickCircleListBean) {
         if(a==1){
-            println("1111111111")
             adapter.setData(bean.result!!)
         }else if (a==2){
-            println("2222222222")
             if(bean.result!!.size>0){
                 adapter.addData(bean.result!!)
             }else{

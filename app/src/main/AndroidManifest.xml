@@ -29,6 +29,7 @@
         <activity android:name=".ui.activity.ForgetPwdActivity"/>
         <activity android:name=".ui.activity.PhotoActivity"/>
         <activity android:name=".ui.activity.ConsultationActivity"/>
+        <activity android:name=".ui.activity.SickCircleInfoActivity"/>
     </application>
 
 </manifest>
