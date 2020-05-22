@@ -1,7 +1,9 @@
 package com.wd.doctor.adapter
 
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.wd.doctor.bean.PublicBean
 import com.wd.doctor.bean.PublicListBean
@@ -12,7 +14,7 @@ import com.wd.doctor.itemview.MyAskItemView
  * @version 创建时间：2020/5/22 0022 16:39
  * @Description: 用途：完成特定功能
  */
-class AskAdapter:RecyclerView.Adapter<AskAdapter.MyAskHolder>() {
+class AskAdapter(var context:Context):RecyclerView.Adapter<AskAdapter.MyAskHolder>() {
     var list = ArrayList<PublicListBean.ResultBean>()
 
     fun setData(result: List<PublicListBean.ResultBean>) {
@@ -31,6 +33,12 @@ class AskAdapter:RecyclerView.Adapter<AskAdapter.MyAskHolder>() {
         val resultBean = list.get(position)
         var itemView = holder.itemView as MyAskItemView
         itemView.setView(resultBean)
+
+        itemView.setOnClickListener {
+            Toast.makeText(context,"开发中……",Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 
 

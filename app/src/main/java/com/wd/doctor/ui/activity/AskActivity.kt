@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_ask.*
  * @Description: 用途：问诊界面
  */
 class AskActivity:BaseActivity(), IInquiryRecordListContract.IView {
-    val adapter by lazy { AskAdapter() }
+    val adapter by lazy { AskAdapter(this) }
     val presenter by lazy { InquiryRecordPresenter(this) }
     override fun initLayoutId(): Int {
         return R.layout.activity_ask
