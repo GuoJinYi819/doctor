@@ -1,5 +1,6 @@
 package com.wd.doctor.ui.activity
 
+import android.view.View
 import com.wd.doctor.R
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.PublicBean
@@ -20,12 +21,14 @@ class SickCircleInfoActivity :BaseActivity(), IFindSickCircleInfoContract.IView 
     }
 
     override fun initLintener() {
+        ttt.setOnClickListener {
+            rrr.visibility = View.GONE
+        }
     }
 
     override fun initData() {
         val sickCircleId = intent.getIntExtra("sickCircleId", -1)
         if(sickCircleId!=-1){
-            ttt.text = sickCircleId.toString()
             //请求详情数据
             presentr.getSickCircleData(sickCircleId)
         }

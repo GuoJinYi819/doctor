@@ -58,6 +58,9 @@ class DetailsFragment:BaseFragment(), IFindSickCircleListContract.IView {
         })
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+    }
     override fun initData() {
         val departmentId = arguments?.getInt("departmentId")
         //获取病友圈列表展示
