@@ -9,6 +9,7 @@ import android.view.View
 import com.wd.doctor.R
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.LoginBean
+import com.wd.doctor.customview.MyClickListener
 import com.wd.doctor.mvp.login.ILoginContract
 import com.wd.doctor.mvp.login.LoginPresenter
 import com.wd.doctor.utils.RsaCoder
@@ -51,28 +52,12 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
         })
 
         //登入
-        btnLogin.setOnClickListener {
-            val emil = editEmil.text.toString()
-            val pwd = editPwd.text.toString()
-            //判空
-            if (stringNotNull(emil)) {
-                editEmil.hint = "账号暂未输入"
-                editEmil.hintTextColor = Color.RED
-            }else if(stringNotNull(pwd)){
-                editPwd.hint = "密码暂未输入"
-                editPwd.hintTextColor = Color.RED
-            }else{
-                    //请求数据
-                    val presenter = LoginPresenter(this)
-                    var hashMap = HashMap<String,String>()
-                    hashMap.put("email",emil)
-                    //加密
-                    val pwd1 = RsaCoder.encryptByPublicKey(pwd)
-                    hashMap.put("pwd",pwd1)
-                    presenter.login(hashMap)
-
+        btnLogin.setOnClickListener(object :MyClickListener(){
+            override fun onMyClick() {
+               onLogin()
             }
-        }
+
+        })
 
         //小眼睛
         iv_hide.setOnLongClickListener(object :View.OnLongClickListener{
@@ -92,6 +77,29 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
         //忘记密码
         tvPwd.setOnClickListener {
             startActivity(Intent(this,ForgetPwdActivity::class.java))
+        }
+    }
+
+    private fun onLogin() {
+        val emil = editEmil.text.toString()
+        val pwd = editPwd.text.toString()
+        //判空
+        if (stringNotNull(emil)) {
+            editEmil.hint = "账号暂未输入"
+            editEmil.hintTextColor = Color.RED
+        }else if(stringNotNull(pwd)){
+            editPwd.hint = "密码暂未输入"
+            editPwd.hintTextColor = Color.RED
+        }else{
+            //请求数据
+            val presenter = LoginPresenter(this)
+            var hashMap = HashMap<String,String>()
+            hashMap.put("email",emil)
+            //加密
+            val pwd1 = RsaCoder.encryptByPublicKey(pwd)
+            hashMap.put("pwd",pwd1)
+            presenter.login(hashMap)
+
         }
     }
 
