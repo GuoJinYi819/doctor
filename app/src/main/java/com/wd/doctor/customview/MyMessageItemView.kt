@@ -15,6 +15,7 @@ import com.wd.doctor.R
  */
 class MyMessageItemView:RelativeLayout {
 
+
     var img:ImageView? = null
     var tv:TextView? = null
 
@@ -29,6 +30,11 @@ class MyMessageItemView:RelativeLayout {
         val view = LayoutInflater.from(context).inflate(R.layout.itme_mymessage, this)
         img = view.findViewById(R.id.ivIma)
         tv = view.findViewById(R.id.tvText1)
+    }
+    //展示数据
+    fun setView(a: String, i: Int) {
+        img?.setBackgroundResource(i)
+        tv?.text = a
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.wd.doctor.R
 import com.wd.doctor.customview.MyMessageItemView
 
 /**ClassName: Doctor
@@ -17,6 +18,14 @@ class MyFourAdapter(var context:Context):BaseAdapter() {
     val img = ArrayList<Int>()
 
     init {
+        arr.add("历史文正")
+        arr.add("我的钱包")
+        arr.add("被采纳建议")
+        arr.add("设置自动回复")
+        img.add(R.mipmap.my_icon_historical_inquiry_n)
+        img.add(R.mipmap.my_icon_wallet_n)
+        img.add(R.mipmap.my_icon_recommendations_adopted_n)
+        img.add(R.mipmap.my_icon_automatic_response_n)
 
     }
 
@@ -33,6 +42,10 @@ class MyFourAdapter(var context:Context):BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        return MyMessageItemView(context)
+        val a = arr.get(position)
+        val i = img.get(position)
+        val myMessageItemView = MyMessageItemView(context)
+        myMessageItemView.setView(a,i)
+        return myMessageItemView
     }
 }
