@@ -30,6 +30,9 @@ class SickCircleInfoActivity :BaseActivity(), IFindSickCircleInfoContract.IView 
         ivBack.setOnClickListener {
             finish()
         }
+        ivKnow.setOnClickListener {
+            rrr.visibility = View.GONE
+        }
     }
 
     override fun initData() {
@@ -61,6 +64,8 @@ class SickCircleInfoActivity :BaseActivity(), IFindSickCircleInfoContract.IView 
             myText_2.tvText?.text = result.departmentName
             myText_3.tv?.text = "病症详情"
             myText_3.tvText?.text = result.detail
+            //标题
+            tvTitle.text = result.title
             //医院
             tvTreatmentHospital.text = result.treatmentHospital
             //治愈那个时间
@@ -70,10 +75,22 @@ class SickCircleInfoActivity :BaseActivity(), IFindSickCircleInfoContract.IView 
             //相关图片
             val picture = result.picture
             if (!TextUtils.isEmpty(picture)) {
-                Glide.with(App.context!!).load(picture).into(ivImg)
+                ivImg1.visibility = View.VISIBLE
+                tvImag.visibility = View.VISIBLE
+                Glide.with(App.context!!).load(picture).into(ivImg1)
             }else{
-                ivImg.visibility = View.GONE
+                ivImg1.visibility = View.GONE
                 tvImag.visibility = View.GONE
+            }
+            //悬赏金
+            val amount = result.amount
+            if(amount!=0){
+                rrr.visibility = View.VISIBLE
+                tvMoney.visibility = View.VISIBLE
+                tvMoney.text = "${amount}H币"
+            }else{
+                rrr.visibility = View.GONE
+                tvMoney.visibility = View.GONE
             }
         }
 

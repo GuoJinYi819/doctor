@@ -132,7 +132,7 @@
 
                 </TextView>
                 <ImageView
-                    android:id="@+id/ivImg"
+                    android:id="@+id/ivImg1"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:background="@mipmap/ic_launcher"
@@ -149,6 +149,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/tvMoney"
             android:text="100H币"
             android:textColor="#FF00"
             android:layout_centerInParent="true"
@@ -169,20 +170,58 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/rrr"
         android:alpha="0.6"
         android:background="#000"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/selsct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ImageView>
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_above="@id/iv"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+        </LinearLayout>
+
         <TextView
             android:id="@+id/ttt"
-            android:text="俺知道了"
+            android:layout_above="@id/ll"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="50dp"
+            android:text="帮助解答问题？\n将有机会获得H币呦~"
             android:textColor="#FFF"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
         </TextView>
+        <ImageView
+            android:id="@+id/ivKnow"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@id/ll"
+            android:layout_below="@id/ttt"
+            android:src="@mipmap/know"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ImageView>
+
     </RelativeLayout>
 </RelativeLayout>
