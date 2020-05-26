@@ -1,10 +1,12 @@
 package com.wd.doctor.adapter
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.wd.doctor.R
 import com.wd.doctor.bean.PublicBean
 import com.wd.doctor.bean.PublicListBean
 import com.wd.doctor.itemview.MyAskItemView
@@ -22,20 +24,44 @@ class AskAdapter(var context:Context):RecyclerView.Adapter<AskAdapter.MyAskHolde
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAskHolder {
-        return MyAskHolder(MyAskItemView(parent.context))
+        if(viewType==100){
+            val inflate = LayoutInflater.from(context).inflate(R.layout.item_null, parent, false)
+            return MyAskHolder(inflate)
+        }else{
+            return MyAskHolder(MyAskItemView(parent.context))
+        }
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list.size+1
     }
 
+    override fun getItemViewType(position: Int): Int {
+        if(position == list.size){
+            return 100
+        }else{
+            return 0
+        }
+    }
+
+
     override fun onBindViewHolder(holder: MyAskHolder, position: Int) {
+        if(position==list.size){
+            if(list.size==0){
+                holder.itemView.visibility = View.VISIBLE
+            }else{
+                holder.itemView.visibility = View.GONE
+            }
+            return
+        }
         val resultBean = list.get(position)
         var itemView = holder.itemView as MyAskItemView
         itemView.setView(resultBean)
 
         itemView.setOnClickListener {
-            Toast.makeText(context,"开发中……",Toast.LENGTH_SHORT).show()
+            list.clear()
+            notifyDataSetChanged()
+
         }
 
 

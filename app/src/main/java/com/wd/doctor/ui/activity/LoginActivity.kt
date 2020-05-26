@@ -5,7 +5,10 @@ import android.graphics.Color
 import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
+import cn.jpush.im.android.api.JMessageClient
+import cn.jpush.im.api.BasicCallback
 import com.wd.doctor.R
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.LoginBean
@@ -134,13 +137,30 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
                 spUtil.putInt(SpKey.DOCTORID,id!!)
                 spUtil.putString(SpKey.SESSIONID,sessionId!!)
 
-                val whetherHaveImagePic = it.whetherHaveImagePic
-                if(whetherHaveImagePic==1){
-                    startActivityFinish<HomePagerActivity>()
-                    overridePendingTransition(R.anim.s0,R.anim.s1)
-                }else{
-                    startActivityFinish<PhotoActivity>()
-                }
+                //注册极光
+                JMessageClient.register("userName2","g123",object :BasicCallback(){
+                    override fun gotResult(s: Int, i: String?) {
+                        Log.i("注册", "gotResult: $s====$i")
+                    }
+
+                })
+                JMessageClient.login("userName2", "g123", object : BasicCallback() {
+                    override fun gotResult(i: Int, s: String) {
+                        Log.i("a", "gotResult: ${s}")
+                        if (s == "Success"){
+                            val whetherHaveImagePic = it.whetherHaveImagePic
+                            if(whetherHaveImagePic==1){
+                                startActivityFinish<HomePagerActivity>()
+                                overridePendingTransition(R.anim.s0,R.anim.s1)
+                            }else{
+                                startActivityFinish<PhotoActivity>()
+                            }
+                        }
+
+                    }
+                })
+
+
             }
 
         }else if(bean.message!!.contains("登录失败，账号或密码错误")){

@@ -1,6 +1,12 @@
 package com.wd.doctor.ui.activity
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import cn.jpush.im.android.api.JMessageClient
+import cn.jpush.im.android.api.content.TextContent
+import cn.jpush.im.android.api.enums.ContentType
+import cn.jpush.im.android.api.event.MessageEvent
+import cn.jpush.im.android.api.model.UserInfo
 import com.wd.doctor.R
 import com.wd.doctor.adapter.AskAdapter
 import com.wd.doctor.base.BaseActivity
@@ -18,6 +24,12 @@ import kotlinx.android.synthetic.main.activity_ask.*
 class AskActivity:BaseActivity(), IInquiryRecordListContract.IView {
     val adapter by lazy { AskAdapter(this) }
     val presenter by lazy { InquiryRecordPresenter(this) }
+
+    init {
+        //注册极光
+        JMessageClient.registerEventReceiver(this)
+    }
+
     override fun initLayoutId(): Int {
         return R.layout.activity_ask
     }
@@ -44,5 +56,27 @@ class AskActivity:BaseActivity(), IInquiryRecordListContract.IView {
 
     }
     override fun onInquiryRecordFailed(error: String) {
+    }
+
+    //接收信息
+    fun onEvent(event: MessageEvent) {
+        //获取事件发生的会话对象
+        val message = event.message//获取此次离线期间会话收到的新消息列表
+        when (message.contentType) {
+            ContentType.text -> {
+                // 处理文字消息
+                val userName = (message.targetInfo as UserInfo).userName
+                val content = message.content as TextContent
+                val text = content.text
+
+                Log.i("消息", "onEvent: $text")
+            }
+            else -> Log.i("office", message.fromType)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        JMessageClient.unRegisterEventReceiver(this)
     }
 }

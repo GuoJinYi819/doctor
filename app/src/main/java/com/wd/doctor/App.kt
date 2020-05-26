@@ -2,6 +2,7 @@ package com.wd.doctor
 
 import android.app.Application
 import android.content.Context
+import cn.jpush.im.android.api.JMessageClient
 
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
@@ -18,5 +19,7 @@ class App:Application() {
     override fun onCreate() {
         super.onCreate()
         context = this
+        JMessageClient.setDebugMode(true)
+        JMessageClient.init(this)
     }
 }
