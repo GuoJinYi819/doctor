@@ -1,6 +1,7 @@
 package com.wd.doctor.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import com.wd.doctor.R
 import com.wd.doctor.bean.PublicBean
 import com.wd.doctor.bean.PublicListBean
 import com.wd.doctor.itemview.MyAskItemView
+import com.wd.doctor.ui.activity.ContentActivity
+import org.jetbrains.anko.startActivity
 
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
@@ -59,9 +62,10 @@ class AskAdapter(var context:Context):RecyclerView.Adapter<AskAdapter.MyAskHolde
         itemView.setView(resultBean)
 
         itemView.setOnClickListener {
-            list.clear()
-            notifyDataSetChanged()
-
+            val nickName = resultBean.nickName
+            val intent = Intent(context, ContentActivity::class.java)
+            intent.putExtra("name",nickName)
+            context.startActivity(intent)
         }
 
 

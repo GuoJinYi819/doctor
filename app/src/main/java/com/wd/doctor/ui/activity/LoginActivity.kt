@@ -138,15 +138,16 @@ class LoginActivity:BaseActivity(), View.OnClickListener, ILoginContract.IView {
                 spUtil.putString(SpKey.SESSIONID,sessionId!!)
 
                 //注册极光
-                JMessageClient.register("userName2","g123",object :BasicCallback(){
+                JMessageClient.register("user"+id.toString(),"g123",object :BasicCallback(){
                     override fun gotResult(s: Int, i: String?) {
                         Log.i("注册", "gotResult: $s====$i")
+                        println("user"+id.toString())
                     }
 
                 })
-                JMessageClient.login("userName2", "g123", object : BasicCallback() {
+                JMessageClient.login("user"+id.toString(), "g123", object : BasicCallback() {
                     override fun gotResult(i: Int, s: String) {
-                        Log.i("a", "gotResult: ${s}")
+                        Log.i("登入", "gotResult: ${s}")
                         if (s == "Success"){
                             val whetherHaveImagePic = it.whetherHaveImagePic
                             if(whetherHaveImagePic==1){

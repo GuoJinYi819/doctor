@@ -66,4 +66,10 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/inquiry/verify/v1/findInquiryRecordList"
         return path
     }
+
+    //查询聊天记录
+    fun getInquiryDetailsList():String{
+        var path = "http://mobile.bwstudent.com/health/doctor/inquiry/verify/v1/findInquiryDetailsList"
+        return path
+    }
 }
