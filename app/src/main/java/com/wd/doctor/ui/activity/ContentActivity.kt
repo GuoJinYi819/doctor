@@ -1,11 +1,18 @@
 package com.wd.doctor.ui.activity
 
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.wd.doctor.R
+import com.wd.doctor.adapter.ContentAdapter
 import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.PublicListBean
 import com.wd.doctor.mvp.InquiryDetailsList.InquiryDetailsListContract
 import com.wd.doctor.mvp.InquiryDetailsList.InquiryDetailsListPresenter
 import kotlinx.android.synthetic.main.activity_content.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
+import kotlin.coroutines.Continuation
 
 /**ClassName: Doctor
  * @author 作者 : GuoJinYi
@@ -13,6 +20,9 @@ import kotlinx.android.synthetic.main.activity_content.*
  * @Description: 用途：聊天界面
  */
 class ContentActivity:BaseActivity(), InquiryDetailsListContract.IView {
+
+    //适配器
+    val adapter by lazy { ContentAdapter(this) }
 
     //获取聊天数据
     val presenter by lazy { InquiryDetailsListPresenter(this) }
@@ -34,11 +44,18 @@ class ContentActivity:BaseActivity(), InquiryDetailsListContract.IView {
         map.put("page","1")
         map.put("count","15")
         presenter.getData(map)
+
+        //设置布局管理器
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter =adapter
     }
 
     //获取聊天数据
     override fun onSuccess(bean: PublicListBean) {
-
+        val result = bean.result
+        //倒叙
+        Collections.reverse(result)
+        adapter.setData(result as ArrayList<PublicListBean.ResultBean>?)
     }
 
     override fun onFailed(error: String) {
