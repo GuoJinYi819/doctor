@@ -8,6 +8,8 @@ import com.wd.doctor.base.BaseActivity
 import com.wd.doctor.bean.PublicListBean
 import com.wd.doctor.mvp.InquiryDetailsList.InquiryDetailsListContract
 import com.wd.doctor.mvp.InquiryDetailsList.InquiryDetailsListPresenter
+import com.wd.doctor.mvp.pushmessage.IPushMessaveContract
+import com.wd.doctor.mvp.pushmessage.PushMessagePresenter
 import kotlinx.android.synthetic.main.activity_content.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -19,13 +21,16 @@ import kotlin.coroutines.Continuation
  * @version 创建时间：2020/5/26 0026 14:52
  * @Description: 用途：聊天界面
  */
-class ContentActivity:BaseActivity(), InquiryDetailsListContract.IView {
+class ContentActivity:BaseActivity(), InquiryDetailsListContract.IView, IPushMessaveContract.IView {
 
     //适配器
     val adapter by lazy { ContentAdapter(this) }
 
     //获取聊天数据
     val presenter by lazy { InquiryDetailsListPresenter(this) }
+
+    //发送消息
+    val pushPresenter by lazy { PushMessagePresenter(this) }
     override fun initLayoutId(): Int {
         return R.layout.activity_content
     }
@@ -34,9 +39,28 @@ class ContentActivity:BaseActivity(), InquiryDetailsListContract.IView {
         ivBack.setOnClickListener {
             finish()
         }
+        sendMessage.setOnClickListener {
+            val map = HashMap<String,String>()
+            val intExtra = intent.getIntExtra("userId", -1)
+            if(intExtra!=-1){
+                map.put("inquiryId",intExtra.toString())
+                map.put("userId",intExtra.toString())
+            }
+            map.put("content","好好好")
+            map.put("type","1")
+            pushPresenter.pushMessage(map)
+        }
     }
 
     override fun initData() {
+        getData()
+
+        //设置布局管理器
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter =adapter
+    }
+
+    private fun getData(){
         tvTitle.text = intent.getStringExtra("name")
         //获取聊天数据
         val map = HashMap<String,String>()
@@ -44,10 +68,6 @@ class ContentActivity:BaseActivity(), InquiryDetailsListContract.IView {
         map.put("page","1")
         map.put("count","15")
         presenter.getData(map)
-
-        //设置布局管理器
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter =adapter
     }
 
     //获取聊天数据
@@ -59,6 +79,14 @@ class ContentActivity:BaseActivity(), InquiryDetailsListContract.IView {
     }
 
     override fun onFailed(error: String) {
+    }
+
+    //发送消息
+    override fun onPushSuccess(bean: PublicListBean) {
+        getData()
+    }
+
+    override fun onPushFailed(error: String) {
     }
 
 }

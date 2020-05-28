@@ -42,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp">
             <TextView
+                android:id="@+id/sendMessage"
                 android:gravity="center"
                 android:text="发送消息"
                 android:layout_width="match_parent"

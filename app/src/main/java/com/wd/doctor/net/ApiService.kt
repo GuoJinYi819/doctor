@@ -71,4 +71,9 @@ interface ApiService {
     //查询聊天记录
     @GET
     fun getInquiryDetailsList(@Url path:String,@QueryMap params:Map<String,String>):Observable<PublicListBean>
+
+    //发送消息
+    @POST
+    @FormUrlEncoded
+    fun pushMessage(@Url path:String,@FieldMap params:Map<String,String>):Observable<PublicListBean>
 }

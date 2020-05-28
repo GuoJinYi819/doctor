@@ -72,4 +72,10 @@ object PathUtil {
         var path = "http://mobile.bwstudent.com/health/doctor/inquiry/verify/v1/findInquiryDetailsList"
         return path
     }
+
+    //发送消息
+    fun pushMessage():String{
+        var path  = "http://mobile.bwstudent.com/health/doctor/inquiry/verify/v1/pushMessage"
+        return path
+    }
 }

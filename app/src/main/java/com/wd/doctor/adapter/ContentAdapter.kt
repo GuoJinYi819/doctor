@@ -25,7 +25,9 @@ class ContentAdapter(var context: Context):RecyclerView.Adapter<ContentAdapter.M
 
     var list = ArrayList<PublicListBean.ResultBean>()
     fun setData(result: ArrayList<PublicListBean.ResultBean>?) {
+        list.clear()
         list.addAll(result!!)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyContentHolder {

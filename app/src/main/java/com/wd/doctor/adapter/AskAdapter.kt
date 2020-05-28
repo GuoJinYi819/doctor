@@ -64,7 +64,9 @@ class AskAdapter(var context:Context):RecyclerView.Adapter<AskAdapter.MyAskHolde
         itemView.setOnClickListener {
             val nickName = resultBean.nickName
             val intent = Intent(context, ContentActivity::class.java)
+            val userId = resultBean.userId
             intent.putExtra("name",nickName)
+            intent.putExtra("userId",userId)
             context.startActivity(intent)
         }
 
